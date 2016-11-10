@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hihatu.mapper.TestMapper">
+    <select id="selectById" resultType="TestBean">
+        SELECT * FROM TestTable WHERE Id = #{id}
+    </select>
+    <update id="update">
+        UPDATE TestTable SET
+            Content = #{content}
+        WHERE Id = #{id}
+    </update>
+</mapper>
