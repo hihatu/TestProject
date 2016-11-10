@@ -1,12 +1,13 @@
 package com.hihatu;
 
+import org.apache.struts2.dispatcher.filter.StrutsPrepareAndExecuteFilter;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
-import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Bean;
 
-@ComponentScan(basePackages = { "com.hihatu.mapper", "com.hihatu.service", "com.hihatu.web" })
 @SpringBootApplication
 public class Application extends SpringBootServletInitializer {
 
@@ -17,5 +18,14 @@ public class Application extends SpringBootServletInitializer {
 
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
+    }
+
+    @Bean
+    public FilterRegistrationBean filterRegistrationBean() {
+        FilterRegistrationBean registrationBean = new FilterRegistrationBean();
+        StrutsPrepareAndExecuteFilter struts = new StrutsPrepareAndExecuteFilter();
+        registrationBean.setFilter(struts);
+        registrationBean.setOrder(1);
+        return registrationBean;
     }
 }

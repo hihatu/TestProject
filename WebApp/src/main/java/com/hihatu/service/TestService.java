@@ -1,5 +1,7 @@
 package com.hihatu.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Propagation;
@@ -25,5 +27,9 @@ public class TestService {
 
     public void updateTest(int id, String content) {
         this.testMapper.update(id, content);
+    }
+
+    public List<TestBean> getTestBeanList() {
+        return this.testMapper.selectAll();
     }
 }

@@ -1,5 +1,7 @@
 package com.hihatu.mapper;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -11,5 +13,7 @@ public interface TestMapper {
     TestBean selectById(int id);
 
     void update(@Param("id") int id, @Param("content") String content);
+
+    List<TestBean> selectAll();
 
 }

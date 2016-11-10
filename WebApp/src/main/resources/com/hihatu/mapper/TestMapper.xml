@@ -9,4 +9,7 @@
             Content = #{content}
         WHERE Id = #{id}
     </update>
+    <select id="selectAll" resultType="TestBean">
+        SELECT * FROM TestTable
+    </select>
 </mapper>
