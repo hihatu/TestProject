@@ -1,16 +1,20 @@
 package com.hihatu.domain;
 
-public class TestBean {
+import java.io.Serializable;
 
-    private int id;
+public class TestBean implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
+    private Integer id;
     private String content;
 
-    public TestBean(int id, String content) {
+    public TestBean(Integer id, String content) {
         this.id = id;
         this.content = content;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 

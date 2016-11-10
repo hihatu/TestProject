@@ -15,8 +15,17 @@ public class TestController {
     @Autowired
     private TestService testService;
 
-    @RequestMapping("/hello")
-    public TestBean helloWorld(@RequestParam(value="name", defaultValue="World") String name) {
-        return testService.getTestBean(name);
+    @RequestMapping("/select")
+    public TestBean select(@RequestParam(value = "id", defaultValue = "0") Integer id) {
+        return testService.getTestBean(id);
+    }
+
+    @RequestMapping("/update")
+    public String update(@RequestParam(value = "id") Integer id, @RequestParam(value = "content") String content) {
+        if (id == null || content == null) {
+            return "failed";
+        }
+        testService.updateTest(id, content);
+        return "success";
     }
 }

@@ -1,18 +1,29 @@
 package com.hihatu.service;
 
-import java.util.concurrent.atomic.AtomicInteger;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.hihatu.domain.TestBean;
+import com.hihatu.mapper.TestMapper;
 
 @Component
+@Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
 public class TestService {
 
-    private final AtomicInteger counter = new AtomicInteger();
+    @Autowired
+    private TestMapper testMapper;
 
-    public TestBean getTestBean(String content){
-        TestBean bean = new TestBean(counter.incrementAndGet(), String.format("Hello, %s!", content));
+    public TestBean getTestBean(int id) {
+        TestBean bean = this.testMapper.selectById(id);
+        if (bean == null) {
+            bean = new TestBean(0, "Hello, World!");
+        }
         return bean;
+    }
+
+    public void updateTest(int id, String content) {
+        this.testMapper.update(id, content);
     }
 }
