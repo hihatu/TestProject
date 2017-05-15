@@ -1,4 +1,4 @@
-# shopping-manage
+# TestProject
 The repository includes 3 projects:<br/>
 android: <br/>
 &nbsp;&nbsp;Cloned from google's android-architecture/todo-mvp project. There is no change yet during now time.<br/>
